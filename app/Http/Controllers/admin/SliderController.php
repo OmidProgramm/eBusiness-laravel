@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\createSliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -24,9 +25,21 @@ class SliderController extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(createSliderRequest $request)
     {
-        dd($request);
+        $file = $request->file('image');
+        $image_name = "";
+        if(!empty($file)){
+            $image_name = sha1(time()).".".$file->getClientOriginalExtension();
+            $file->move("images/slider",$image_name);
+        }
+        Slider::create([
+            "title" => $request->title,
+            "description" => $request->description,
+            "image" => $image_name
+        ]);
+        session()->flash('createSlider', "Slider is created successfully");
+       return redirect()->route("slider.create");
     }
 
    
@@ -50,6 +63,11 @@ class SliderController extends Controller
     
     public function destroy(string $id)
     {
-        
+        $deleteImage = Slider::findOrfail($id)->image; 
+        if(file_exists("images/slider/".$deleteImage)){
+            unlink("images/slider/".$deleteImage); 
+        }
+        Slider::destroy($id);
+        return back();
     }
 }

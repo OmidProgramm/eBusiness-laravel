@@ -7,6 +7,9 @@
     @php
         use Illuminate\Support\Str;
     @endphp
+     @if(session('createSlider'))
+        <p class="createSession">{{session('createSlider')}}</p>
+    @endif
 <div class="sliderDak">
     <table class="showSlider">
         <tr>
@@ -20,8 +23,14 @@
             <tr>
                 <td>{{$item->title}}</td>
                 <td>{{ Str::limit($item->description, 20) }}</td>
-                <td><img class="imageSlider" src="{{$item->image}}"></td>
-                <td>delete</td>
+                <td><img class="imageSlider" src="{{asset('images/slider/'.$item->image)}}"></td>
+                <td>
+                    <form action="{{route('slider.destroy',['id'=>$item->id])}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
                 <td>update</td>
             </tr>
         @empty
