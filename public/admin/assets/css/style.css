@@ -1,0 +1,42 @@
+.getNav{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #333333;
+    color: white;
+    padding: 10px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+ul li a {
+    margin: 8px;
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 12px;
+}
+
+ul li a:hover:not(.active) {
+    background-color: #111111;
+}
+
+ul li a.active {
+    background-color: #04AA6D;
+}
+ul li a.backHome{
+    background-color: #112a76;
+}
+ul li a.danger {
+    background-color: #ef6013;
+}
+
+.form-not{
+    display: none;
+}
+

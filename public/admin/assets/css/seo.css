@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+.responsive-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 5px auto;
+  border-radius: 4px;
+  border: 2px solid #04AA6D;;
+  background-color:  black;
+  color: white;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+label {
+  min-width: 48%;
+  margin-bottom: 10px;
+}
+
+input[type=text], select {
+  min-width: 45%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+textarea {
+  min-width: 45%;
+  height: 150px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.errorSeo{
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 10px;
+  background-color: rgb(242, 74, 74);
+}
+.createSeo{
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 10px;
+  background-color: rgb(80, 242, 74);
+}
+.detailsSeo{
+  background-color: rgb(18, 92, 136);
+  padding: 12px;
+  text-align: center;
+
+}
+.detailsSeo a{
+ text-decoration: none;
+  color: whitesmoke;
+}
+
+@media screen and (max-width: 600px) {
+  label,
+  input[type=text],
+  input[type=submit],
+  select, textarea {
+    flex: 100%;
+    min-width: 100%;
+  }
+}
+
+
+

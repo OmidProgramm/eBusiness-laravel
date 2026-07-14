@@ -1,0 +1,27 @@
+<?php
+
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\front\IndexController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/',[IndexController::class,'index'])->name('show-website');
+Route::get('/login', function () {
+    return view('auth.login');
+});
+Route::get('/register', function () {
+    return view('auth.register');
+});
+Route::get('/verify', function () {
+    return view('auth.verify');
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.index');
+    Route::post('/admin/store', [AdminController::class, 'storeSeo'])
+        ->name('admin.seo.store');
+    Route::get('/admin/show', [AdminController::class, 'showDetails'])
+        ->name('details.show');
+    Route::delete('/admin/deleteSeo/{id}', [AdminController::class, 'deleteSeo'])
+        ->name('delete.Seo');
+});
