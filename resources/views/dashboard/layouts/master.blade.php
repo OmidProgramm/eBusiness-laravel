@@ -18,6 +18,7 @@
                 <h4>Logo</h4>
                 <ul>
                     <li><a class="active" href="#home">Home</a></li>
+                    <li><a class="backHome" href="{{route('slider.index')}}">slider</a></li>
                     <li><a class="backHome" href="{{route('show-website')}}" target="_blank">Show-Website</a></li>
                     <li>
                         {{-- <form action="{{route('logout')}}" method="POST" class="form-not">
