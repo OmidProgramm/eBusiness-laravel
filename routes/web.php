@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ Route::get('/verify', function () {
 });
 
 Route::prefix('dashboard')->group(function () {
+    // Admin & Seo
     Route::get('/admin', [AdminController::class, 'index'])
         ->name('admin.index');
     Route::post('/admin/store', [AdminController::class, 'storeSeo'])
@@ -24,4 +26,9 @@ Route::prefix('dashboard')->group(function () {
         ->name('details.show');
     Route::delete('/admin/deleteSeo/{id}', [AdminController::class, 'deleteSeo'])
         ->name('delete.Seo');
+        // End Admin & Seo
+
+        // Slider CRUD
+    Route::resource("/slider",SliderController::class)->parameters(["slider"=>"id"]);
+        // End Slider CRUD
 });
