@@ -31,7 +31,11 @@
                         <input type="submit" value="delete">
                     </form>
                 </td>
-                <td>update</td>
+                <td>
+                    <form action="{{route('slider.edit',['id'=>$item->id])}}" method="GET">
+                        <input type="submit" value="edit" class="edit">
+                    </form>
+                </td>
             </tr>
         @empty
             <tr>

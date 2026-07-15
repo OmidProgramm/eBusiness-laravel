@@ -20,9 +20,13 @@
         @enderror
 
         <label for="description">Description:</label>
-        <textarea id="description" name="description" placeholder="Write description..">
-            {{ old('description') }}
+        <textarea
+            id="description"
+            name="description"
+            placeholder="Write description.."
+            >{{ old('description') }}
         </textarea>
+
         @error('description')
             <p class="error">{{$message}}</p>
         @enderror

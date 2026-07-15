@@ -67,12 +67,16 @@ th {
   margin: 10px;
   background-color: rgb(80, 242, 74);
 }
-form input{
+form input, .edit{
     background-color: rgb(240, 87, 87);
     color: whitesmoke;
     padding: 8px;
     cursor: pointer;
     transition: 0.4s linear;
+}
+.edit{
+    background-color: rgb(189, 241, 93);
+    color: black;
 }
 form input:hover{
     background-color: whitesmoke;

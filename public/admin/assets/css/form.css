@@ -18,7 +18,7 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=submit], .submitupdate {
   width: 100%;
   background-color: #4CAF50;
   color: white;
@@ -35,7 +35,7 @@ input[type=submit]:hover {
 textarea {
   width: 100%;
   height: 150px;
-  padding: 5px 2px;
+  padding: 0;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;

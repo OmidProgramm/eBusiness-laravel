@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createSliderRequest;
+use App\Http\Requests\updateSliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -51,13 +52,34 @@ class SliderController extends Controller
     
     public function edit(string $id)
     {
-        
+        $slider = Slider::findOrfail($id);
+        return view("dashboard.slider.edit",compact("slider"));
     }
 
     
-    public function update(Request $request, string $id)
+    public function update(updateSliderRequest $request, string $id)
     {
+         $slider = Slider::findOrFail($id);
+        $file = $request->file('image');
+        $new_image = "";
+        if($file){
+            if($slider->image && file_exists("images/slider/".$slider->image)){
+                unlink("images/slider/".$slider->image);
+            }
+            $new_image = sha1(time()).".".$file->getClientOriginalExtension();
+            $file->move("images/slider/",$new_image);
+            
+        }else{
+            $new_image = $slider->image;
+        }
         
+        $slider->update([
+            "title" => $request->title,
+            "description" => $request->description,
+            "image" => $new_image
+        ]);
+        session()->flash('updatedteSlider', "Slider is updated successfully");
+       return redirect()->route("slider.index");
     }
 
     
