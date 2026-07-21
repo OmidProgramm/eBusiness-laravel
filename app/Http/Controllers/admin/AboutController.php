@@ -11,13 +11,14 @@ class AboutController extends Controller
     
     public function index()
     {
-        $about = About::all();
+        $about = About::paginate(5);
+        return view("dashboard.about.index",compact('about'));
     }
 
     
     public function create()
     {
-        
+        return view("dashboard.about.create");
     }
 
     

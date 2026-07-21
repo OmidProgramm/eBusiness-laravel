@@ -2,10 +2,11 @@
 @section('css')
  <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderCreate.css') }}">
  <link rel="stylesheet" href="{{ asset('admin/assets/css/form.css') }}">
+ <link rel="stylesheet" href="{{ asset('admin/assets/css/aboutCreate.css') }}"> 
 @endsection
 @section('content')
-    <h1>Slider Create</h1>
-    <form action="{{route('slider.store')}}" method="POST" enctype="multipart/form-data">
+    <h1>About Create</h1>
+    <form action="{{route('about.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" placeholder="Your title" value="{{ old('title') }}">
@@ -33,4 +34,5 @@
 
         <input type="submit" value="Submit">
     </form>
+    <div class="createAbout"><a href="{{route('about.index')}}">About-index</a></div>
 @endsection
