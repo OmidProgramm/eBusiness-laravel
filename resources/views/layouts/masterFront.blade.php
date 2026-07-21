@@ -12,9 +12,10 @@
 
     {{-- Favicon --}}
     <link href="{{asset('front/assets/img/favicon.ico')}}" rel="icon">
-    <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
+    
 
     {{-- start css --}}
+    <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
     @yield("css")
     {{-- end css --}}
     </head>
@@ -24,6 +25,7 @@
     {{-- end project --}}
     
     {{-- start js --}}
+   
         @yield("js")
     {{-- end js --}}
 

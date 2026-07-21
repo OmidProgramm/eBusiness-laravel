@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\front\IndexController;
@@ -31,4 +32,7 @@ Route::prefix('dashboard')->group(function () {
         // Slider CRUD
     Route::resource("/slider",SliderController::class)->parameters(["slider"=>"id"]);
         // End Slider CRUD
+        // About CRUD
+    Route::resource("/about",AboutController::class)->parameters(["about"=>"id"]);
+        // End About CRUD
 });

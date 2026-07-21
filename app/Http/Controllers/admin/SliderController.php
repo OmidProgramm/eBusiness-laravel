@@ -59,7 +59,7 @@ class SliderController extends Controller
     
     public function update(updateSliderRequest $request, string $id)
     {
-         $slider = Slider::findOrFail($id);
+        $slider = Slider::findOrFail($id);
         $file = $request->file('image');
         $new_image = "";
         if($file){
