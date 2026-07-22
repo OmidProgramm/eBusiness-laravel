@@ -1,0 +1,71 @@
+/* butttons*/
+.btn {
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:7px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.btn-parent{
+    width: 200px;
+    margin: 15px auto;
+}
+/* primary */
+.btn-primary {
+    background:#0d6efd;
+    color:white;
+}
+
+.btn-primary:hover {
+    background:#0b5ed7;
+}
+
+/* success */
+.btn-success {
+    background:#198754;
+    color:white;
+}
+
+.btn-success:hover {
+    background:#157347;
+}
+
+/* edit */
+.btn-edit {
+    background:#ffc107;
+    color:#000;
+}
+
+.btn-edit:hover {
+    background:#ffca2c;
+}
+
+/* delete */
+.btn-delete {
+    background:#dc3545;
+    color:white;
+}
+
+.btn-delete:hover {
+    background:#bb2d3b;
+}
+
+/* show */
+.btn-show {
+    background:#0dcaf0;
+    color:#000;
+}
+
+.btn-show:hover {
+    background:#31d2f2;
+}
+
+/* small btn */
+.btn-sm {
+    padding:5px 10px;
+    font-size:13px;
+}

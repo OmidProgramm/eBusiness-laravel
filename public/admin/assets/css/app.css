@@ -1,0 +1,57 @@
+/* Import Components */
+@import "./table.css";
+@import "./buttons.css";
+@import "./form.css";
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6fa;
+    color: #333;
+}
+
+/* Container  */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* page title*/
+.page-title {
+    font-size: 25px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Card  */
+.card {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* error session */
+.error, .session{
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+/* error */
+.error{
+  background-color: rgb(244, 86, 86);
+}
+
+/* session */
+.session{
+  background-color: green;
+}

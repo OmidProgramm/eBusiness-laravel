@@ -1,0 +1,66 @@
+/* table */
+.admin-table {
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+/* Header */
+.admin-table thead {
+    background:#212529;
+    color:white;
+}
+
+.admin-table th {
+    padding:14px;
+    text-align:center;
+    font-size:15px;
+}
+
+/* Body */
+.admin-table td {
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+}
+
+/* Hover */
+.admin-table tbody tr:hover {
+    background:#f8f9fa;
+}
+
+/* table image */
+.table-image {
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* columns */
+.action-column {
+    width:220px;
+}
+
+/* feature */
+.status-active {
+    color:#198754;
+    font-weight:bold;
+}
+
+.status-inactive {
+    color:#dc3545;
+    font-weight:bold;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .admin-table {
+            display:block;
+            overflow-x:auto;
+        }
+
+}

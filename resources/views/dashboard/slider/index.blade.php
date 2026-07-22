@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderIndex.css') }}">
+ <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
 @endsection
 
 @section('content')
@@ -10,8 +10,8 @@
      @if(session('createSlider'))
         <p class="createSession">{{session('createSlider')}}</p>
     @endif
-<div class="sliderDak">
-    <table class="showSlider">
+<div>
+    <table class="admin-table">
         <tr>
             <th>Title</th>
             <th>Description</th>
@@ -19,21 +19,22 @@
             <th>Delete</th>
             <th>Update</th>
         </tr>
+    
         @forelse ($slider as $item)
             <tr>
                 <td>{{$item->title}}</td>
                 <td>{{ Str::limit($item->description, 20) }}</td>
-                <td><img class="imageSlider" src="{{asset('images/slider/'.$item->image)}}"></td>
+                <td><img class="table-image"  src="{{asset('images/slider/'.$item->image)}}"></td>
                 <td>
                     <form action="{{route('slider.destroy',['id'=>$item->id])}}" method="POST">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="delete">
+                        <input type="submit" value="delete" class="btn btn-delete btn-sm">
                     </form>
                 </td>
                 <td>
                     <form action="{{route('slider.edit',['id'=>$item->id])}}" method="GET">
-                        <input type="submit" value="edit" class="edit">
+                        <input type="submit" value="edit" class="btn btn-edit btn-sm">
                     </form>
                 </td>
             </tr>
@@ -44,6 +45,6 @@
         @endforelse
     </table>
      {{$slider->links()}} 
-     <div class="createSlider"><a href="{{route('slider.create')}}">Create-Slider</a></div>
+     <div class="btn-parent"><a class="btn btn-primary" href="{{route('slider.create')}}">Create-Slider</a></div>
 </div>
 @endsection

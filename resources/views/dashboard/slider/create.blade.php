@@ -1,36 +1,46 @@
 @extends('dashboard.layouts.master')
 @section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderCreate.css') }}">
- <link rel="stylesheet" href="{{ asset('admin/assets/css/form.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}"> 
 @endsection
 @section('content')
-    <h1>Slider Create</h1>
+<div class="form-card">
+    <h2 class="page-title">Create Slider</h2>
+    @if(session('createAbout'))
+        <p class="session">{{session('createAbout')}}</p>
+    @endif
+
     <form action="{{route('slider.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Your title" value="{{ old('title') }}">
+        <div class="form-group">
+            <label for="title" class="form-label">Title:</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="Your title" value="{{ old('title') }}">
+        </div>
         @error('title')
             <p class="error">{{$message}}</p>
         @enderror
 
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" placeholder="select image">
+        <div class="form-group">
+        <label class="form-label" for="image">Image:</label>
+        <input class="form-control" type="file" id="image" name="image" placeholder="select image">
+        </div>
         @error('image')
             <p class="error">{{$message}}</p>
         @enderror
 
-        <label for="description">Description:</label>
-        <textarea
-            id="description"
-            name="description"
-            placeholder="Write description.."
-            >{{ old('description') }}
-        </textarea>
-
+        <div class="form-group">
+            <label class="form-label" for="description">Description:</label>
+            <textarea class="form-control"
+                id="description"
+                name="description"
+                placeholder="Write description.."
+                >{{ old('description') }}
+            </textarea>
+        </div>
         @error('description')
             <p class="error">{{$message}}</p>
         @enderror
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn btn-success">
     </form>
+    </div>
 @endsection

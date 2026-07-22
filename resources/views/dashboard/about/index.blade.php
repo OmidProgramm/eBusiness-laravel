@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderIndex.css') }}">
+ <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
 @endsection
 
 @section('content')
@@ -8,10 +8,10 @@
         use Illuminate\Support\Str;
     @endphp
      @if(session('createAbout'))
-        <p class="createSession">{{session('createAbout')}}</p>
+        <p class="session">{{session('createAbout')}}</p>
     @endif
-<div class="sliderDak">
-    <table class="showSlider">
+<div>
+    <table class="admin-table">
         <tr>
             <th>Title</th>
             <th>Description</th>
@@ -23,12 +23,12 @@
             <tr>
                 <td>{{$item->title}}</td>
                 <td>{{ Str::limit($item->description, 20) }}</td>
-                <td><img class="imageSlider" src="{{asset('images/about/'.$item->image)}}"></td>
-                <td>
+                <td><img class="table-image" src="{{asset('images/about/'.$item->image)}}"></td>
+                <td >
                     <form action="{{route('about.destroy',['id'=>$item->id])}}" method="POST">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="delete">
+                        <input type="submit" value="delete" class="btn btn-edit btn-sm">
                     </form>
                 </td>
                 
@@ -40,6 +40,6 @@
         @endforelse
     </table>
      {{$about->links()}} 
-     <div class="createSlider"><a href="{{route('about.create')}}">Create-About</a></div>
+     <div class="btn-parent"><a class="btn btn-primary" href="{{route('about.create')}}">Create-About</a></div>
 </div>
 @endsection
