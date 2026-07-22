@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Seo;
 use App\Models\Slider;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,6 +15,7 @@ class IndexController extends Controller
         $seo = Seo::orderBy('id','desc')->first();
         $slider = Slider::all();
         $about = About::orderBy('id','desc')->first();
-        return view("front.index", compact('seo',"slider","about"));
+        $team = Team::all();
+        return view("front.index", compact('seo',"slider","about","team"));
     }
 }
