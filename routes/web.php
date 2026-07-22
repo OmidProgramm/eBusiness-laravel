@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +36,7 @@ Route::prefix('dashboard')->group(function () {
         // About CRUD
     Route::resource("/about",AboutController::class)->parameters(["about"=>"id"]);
         // End About CRUD
+        // Team CRUD
+    Route::resource("/team",TeamController::class)->parameters(["team"=>"id"]);
+        // End Team CRUD
 });
