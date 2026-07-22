@@ -48,9 +48,6 @@
         @include('front.partials.about')
     {{-- ============== End About Section ============== --}}
 
-    {{-- ============== Service Section ============== --}}
-        @include('front.partials.service')
-    {{-- ============== End Service Section ============== --}}
 
     {{-- ============== Team Section ============== --}}
         @include('front.partials.team')
