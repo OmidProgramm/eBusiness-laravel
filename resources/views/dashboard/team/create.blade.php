@@ -6,6 +6,9 @@
 @endsection
 @section('content')
     <h1>Team Create</h1>
+    @if(session('createTeam'))
+        <p class="createSession">{{session('createTeam')}}</p>
+    @endif
     <form action="{{route('team.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
 
