@@ -7,8 +7,8 @@
     @php
         use Illuminate\Support\Str;
     @endphp
-     @if(session('createTeam'))
-        <p class="createSession">{{session('createTeam')}}</p>
+     @if(session('deleteTeam'))
+        <p class="createSession">{{session('deleteTeam')}}</p>
     @endif
 <div class="sliderDak">
     <table class="showSlider">

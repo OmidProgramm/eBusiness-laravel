@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\createTeamRequest;
+use App\Http\Requests\updateTeamRequest;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -50,13 +51,14 @@ class TeamController extends Controller
    
     public function edit(string $id)
     {
-        //
+        $team = Team::findOrfail($id);
+        return view("dashboard.team.edit",compact("team"));
     }
 
    
-    public function update(Request $request, string $id)
+    public function update(updateTeamRequest $request, string $id)
     {
-        //
+        
     }
 
     
@@ -67,6 +69,7 @@ class TeamController extends Controller
             unlink("images/team/".$deleteImage); 
         }
         Team::destroy($id);
+        Session()->flash("deleteTeam","Team is deleted successfully");
         return back();
     }
 }
