@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\admim\CategoryController;
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\front\IndexController;
@@ -41,6 +41,7 @@ Route::prefix('dashboard')->group(function () {
     Route::resource("/team",TeamController::class)->parameters(["team"=>"id"]);
         // End Team CRUD
         // Category CRUD
-    Route::resource("/category",CategoryController::class)->parameters(["category"=>"id"]);
+        Route::resource("/category",CategoryController::class)->parameters(["category"=>"id"]);
         // End Category CRUD
+    
 });
