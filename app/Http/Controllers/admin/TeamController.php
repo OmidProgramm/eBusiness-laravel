@@ -62,6 +62,11 @@ class TeamController extends Controller
     
     public function destroy(string $id)
     {
-        //
+        $deleteImage = Team::findOrfail($id)->image; 
+        if(file_exists("images/team/".$deleteImage)){
+            unlink("images/team/".$deleteImage); 
+        }
+        Team::destroy($id);
+        return back();
     }
 }
