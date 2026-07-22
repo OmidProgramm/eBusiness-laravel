@@ -16,6 +16,7 @@
 
     {{-- start css --}}
     <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/about.css') }}">
     @yield("css")
     {{-- end css --}}
     </head>

@@ -6,6 +6,9 @@
 @endsection
 @section('content')
     <h1>About Create</h1>
+    @if(session('createAbout'))
+        <p class="createSession">{{session('createAbout')}}</p>
+    @endif
     <form action="{{route('about.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="title">Title:</label>
