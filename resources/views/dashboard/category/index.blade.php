@@ -14,14 +14,14 @@
     <table class="showSlider">
         <tr>
             <th>Title</th>
-            <th>Image</th>
+            <th>Images</th>
             <th>Delete</th>
             <th>Update</th>
         </tr>
         @forelse ($category as $item)
             <tr>
                 <td>{{$item->title}}</td>
-                <td><img class="imageSlider" src="{{asset('images/category/'.$item->image)}}"></td>
+                <td><img class="imageSlider" src="{{asset('images/category/'.$item->images)}}"></td>
                 <td>
                     <form action="{{route('category.destroy',['id'=>$item->id])}}" method="POST">
                         @csrf

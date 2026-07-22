@@ -12,7 +12,7 @@ class createCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,8 @@ class createCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "title" => "required|max:200",
+            "images" => "required|mimes:jpg,jpeg,png|image"
         ];
     }
 }

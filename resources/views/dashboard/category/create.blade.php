@@ -5,6 +5,10 @@
 @endsection
 @section('content')
     <h1>Category Create</h1>
+    @if(session('createCategory'))
+        <p class="createSession">{{session('createCategory')}}</p>
+    @endif
+    
     <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="title">Title:</label>
@@ -13,9 +17,9 @@
             <p class="error">{{$message}}</p>
         @enderror
 
-        <label for="image">Image:</label>
-        <input type="file" id="image" name="image" placeholder="select image">
-        @error('image')
+        <label for="images">Images:</label>
+        <input type="file" id="images" name="images" placeholder="select images">
+        @error('images')
             <p class="error">{{$message}}</p>
         @enderror
 
