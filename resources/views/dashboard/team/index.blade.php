@@ -10,6 +10,9 @@
      @if(session('deleteTeam'))
         <p class="createSession">{{session('deleteTeam')}}</p>
     @endif
+     @if(session('updatedTeam'))
+        <p class="createSession">{{session('updatedTeam')}}</p>
+    @endif
 <div class="sliderDak">
     <table class="showSlider">
         <tr>

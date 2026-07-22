@@ -58,7 +58,30 @@ class TeamController extends Controller
    
     public function update(updateTeamRequest $request, string $id)
     {
+        $team = Team::findOrFail($id);
+        $file = $request->file('image');
+        $new_image = "";
+        if($file){
+            if($team->image && file_exists("images/team/".$team->image)){
+                unlink("images/team/".$team->image);
+            }
+            $new_image = sha1(time()).".".$file->getClientOriginalExtension();
+            $file->move("images/team/",$new_image);
+            
+        }else{
+            $new_image = $team->image;
+        }
         
+        $team->update([
+            "fullName" => $request->fullName,
+            "caption" => $request->caption,
+            "image" => $new_image,
+            "facebook" => $request->facebook,
+            "instagram" => $request->instagram,
+            "twitter" => $request->twitter,
+        ]);
+        session()->flash('updatedTeam', "Team is updated successfully");
+       return redirect()->route("team.index");
     }
 
     
