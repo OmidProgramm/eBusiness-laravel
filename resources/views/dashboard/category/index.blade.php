@@ -10,6 +10,9 @@
      @if(session('deleteCategory'))
         <p class="session">{{session('deleteCategory')}}</p>
     @endif
+     @if(session('updateCategory'))
+        <p class="session">{{session('updateCategory')}}</p>
+    @endif
 <div>
     <table class="admin-table">
         <tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Seo;
 use App\Models\Slider;
 use App\Models\Team;
@@ -16,6 +17,7 @@ class IndexController extends Controller
         $slider = Slider::all();
         $about = About::orderBy('id','desc')->first();
         $team = Team::all();
-        return view("front.index", compact('seo',"slider","about","team"));
+        $category = Category::all();
+        return view("front.index", compact('seo',"slider","about","team","category"));
     }
 }

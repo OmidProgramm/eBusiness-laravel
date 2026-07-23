@@ -60,27 +60,13 @@ class CategoryController extends Controller
         $fileImage = $request->file('image');
         $category = Category::findOrFail($id);
         $oldImage = $category->images;
-
         $image = $this->updateImage($fileImage,"images/category",$oldImage);
-       /*  $category = Category::findOrFail($id);
-        $file = $request->file('image');
-        $new_image = "";
-        if($file){
-            if($category->images && file_exists("images/category/".$category->images)){
-                unlink("images/category/".$category->images);
-            }
-           $new_image = sha1(time()).".".$file->getClientOriginalExtension();
-            $file->move("images/category/",$new_image);
-            
-        }else{
-            $new_image = $category->image;
-        } */
         
         $category->update([
             "title" => $request->title,
             "images" => $image
         ]);
-        session()->flash('updatedteCategory', "Category is updated successfully");
+        session()->flash('updateCategory', "Category is updated successfully");
        return redirect()->route("category.index"); 
     }
 
