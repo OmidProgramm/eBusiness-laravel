@@ -1,14 +1,11 @@
 @extends('dashboard.layouts.master')
-@section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
-@endsection
 
 @section('content')
     @php
         use Illuminate\Support\Str;
     @endphp
      @if(session('createSlider'))
-        <p class="createSession">{{session('createSlider')}}</p>
+        <p class="session">{{session('createSlider')}}</p>
     @endif
 <div>
     <table class="admin-table">

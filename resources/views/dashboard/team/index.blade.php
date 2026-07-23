@@ -1,20 +1,17 @@
 @extends('dashboard.layouts.master')
-@section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderIndex.css') }}">
-@endsection
 
 @section('content')
     @php
         use Illuminate\Support\Str;
     @endphp
      @if(session('deleteTeam'))
-        <p class="createSession">{{session('deleteTeam')}}</p>
+        <p class="session">{{session('deleteTeam')}}</p>
     @endif
      @if(session('updatedTeam'))
-        <p class="createSession">{{session('updatedTeam')}}</p>
+        <p class="session">{{session('updatedTeam')}}</p>
     @endif
-<div class="sliderDak">
-    <table class="showSlider">
+<div>
+    <table class="admin-table">
         <tr>
             <th>FullName</th>
             <th>Caption</th>
@@ -29,7 +26,7 @@
             <tr>
                 <td>{{$item->fullName}}</td>
                 <td>{{ Str::limit($item->caption, 20) }}</td>
-                <td><img class="imageSlider" src="{{asset('images/team/'.$item->image)}}"></td>
+                <td><img class="table-image" src="{{asset('images/team/'.$item->image)}}"></td>
                 <td>{{ Str::limit($item->facebook, 20) }}</td>
                 <td>{{ Str::limit($item->instagram, 20) }}</td>
                 <td>{{ Str::limit($item->twitter, 20) }}</td>
@@ -37,12 +34,12 @@
                     <form action="{{route('team.destroy',['id'=>$item->id])}}" method="POST">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="delete">
+                        <input type="submit" value="delete" class="btn btn-delete btn-sm">
                     </form>
                 </td>
                 <td>
                     <form action="{{route('team.edit',['id'=>$item->id])}}" method="GET">
-                        <input type="submit" value="edit" class="edit">
+                        <input type="submit" value="edit" class="btn btn-edit btn-sm">
                     </form>
                 </td>
             </tr>
@@ -53,6 +50,6 @@
         @endforelse
     </table>
      {{$team->links()}} 
-     <div class="createSlider"><a href="{{route('team.create')}}">Create-Team</a></div>
+     <div class="btn-parent"><a class="btn btn-primary" href="{{route('team.create')}}">Create-Team</a></div>
 </div>
 @endsection

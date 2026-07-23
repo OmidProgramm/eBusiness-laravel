@@ -1,7 +1,4 @@
 @extends('dashboard.layouts.master')
-@section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderIndex.css') }}">
-@endsection
 
 @section('content')
     @php
@@ -10,8 +7,8 @@
      @if(session('createCategory'))
         <p class="createSession">{{session('createCategory')}}</p>
     @endif
-<div class="sliderDak">
-    <table class="showSlider">
+<div>
+    <table class="admin-table">
         <tr>
             <th>Title</th>
             <th>Images</th>
@@ -21,17 +18,17 @@
         @forelse ($category as $item)
             <tr>
                 <td>{{$item->title}}</td>
-                <td><img class="imageSlider" src="{{asset('images/category/'.$item->images)}}"></td>
+                <td><img class="table-image" src="{{asset('images/category/'.$item->images)}}"></td>
                 <td>
                     <form action="{{route('category.destroy',['id'=>$item->id])}}" method="POST">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="delete">
+                        <input type="submit" value="delete" class="btn btn-delete btn-sm">
                     </form>
                 </td>
                 <td>
                     <form action="{{route('category.edit',['id'=>$item->id])}}" method="GET">
-                        <input type="submit" value="edit" class="edit">
+                        <input type="submit" value="edit" class="btn btn-edit btn-sm">
                     </form>
                 </td>
             </tr>
@@ -42,6 +39,6 @@
         @endforelse
     </table>
      {{$category->links()}} 
-     <div class="createSlider"><a href="{{route('category.create')}}">Create-Category</a></div>
+     <div class="btn-parent"><a class="btn btn-primary" href="{{route('category.create')}}">Create-Category</a></div>
 </div>
 @endsection

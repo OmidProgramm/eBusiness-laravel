@@ -1,12 +1,10 @@
 @extends('dashboard.layouts.master')
-@section('css')
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}"> 
-@endsection
+
 @section('content')
 <div class="form-card">
     <h2 class="page-title">Create Slider</h2>
-    @if(session('createAbout'))
-        <p class="session">{{session('createAbout')}}</p>
+    @if(session('createSlider'))
+        <p class="session">{{session('createSlider')}}</p>
     @endif
 
     <form action="{{route('slider.store')}}" method="POST" enctype="multipart/form-data">

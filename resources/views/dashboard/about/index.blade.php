@@ -1,7 +1,4 @@
 @extends('dashboard.layouts.master')
-@section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
-@endsection
 
 @section('content')
     @php

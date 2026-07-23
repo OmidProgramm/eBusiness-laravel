@@ -1,28 +1,30 @@
 @extends('dashboard.layouts.master')
-@section('css')
- <link rel="stylesheet" href="{{ asset('admin/assets/css/sliderCreate.css') }}">
- <link rel="stylesheet" href="{{ asset('admin/assets/css/form.css') }}">
-@endsection
+
 @section('content')
-    <h1>Category Create</h1>
+    <div class="form-card">
+        <h2 class="page-title">Create Team</h2>
     @if(session('createCategory'))
-        <p class="createSession">{{session('createCategory')}}</p>
+        <p class="session">{{session('createCategory')}}</p>
     @endif
     
     <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Your title" value="{{ old('title') }}">
+        <div class="form-group">
+            <label class="form-label" for="title">Title:</label>
+            <input class="form-control" type="text" id="title" name="title" placeholder="Your title" value="{{ old('title') }}">
+        </div>
         @error('title')
             <p class="error">{{$message}}</p>
         @enderror
-
-        <label for="images">Images:</label>
-        <input type="file" id="images" name="images" placeholder="select images">
+        <div class="form-group">
+            <label class="form-label" for="images">Images:</label>
+            <input class="form-control" type="file" id="images" name="images" placeholder="select images">
+        </div>
         @error('images')
             <p class="error">{{$message}}</p>
         @enderror
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn btn-success">
     </form>
+    </div>
 @endsection
