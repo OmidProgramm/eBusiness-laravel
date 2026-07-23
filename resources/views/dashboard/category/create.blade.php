@@ -23,7 +23,6 @@
         @error('images')
             <p class="error">{{$message}}</p>
         @enderror
-
         <input type="submit" value="Submit" class="btn btn-success">
     </form>
     </div>
