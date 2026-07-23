@@ -19,6 +19,8 @@
 
 @section('content')
     
+    
+    
     <h1>Hello Laravel Project</h1></div>
     {{-- ============== Header ============== --}}
         @include('front.partials.header')

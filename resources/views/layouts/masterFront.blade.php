@@ -23,6 +23,11 @@
     {{-- end css --}}
     </head>
 <body>
+    {{-- call Navbar Component --}}
+    <x-navbar-component>
+    </x-navbar-component>
+    {{-- End call Navbar Component --}}
+    
     {{-- make project --}}
         @yield("content")
     {{-- end project --}}
