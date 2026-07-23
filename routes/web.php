@@ -9,6 +9,7 @@ use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class,'index'])->name('show-website');
+Route::get('/category',[IndexController::class,'category'])->name('index.category');
 Route::get('/login', function () {
     return view('auth.login');
 });

@@ -20,4 +20,8 @@ class IndexController extends Controller
         $category = Category::all();
         return view("front.index", compact('seo',"slider","about","team","category"));
     }
+
+    public function category(){
+        return view("front.product");
+    }
 }
