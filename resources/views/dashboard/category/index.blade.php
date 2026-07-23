@@ -7,6 +7,9 @@
      @if(session('createCategory'))
         <p class="createSession">{{session('createCategory')}}</p>
     @endif
+     @if(session('deleteCategory'))
+        <p class="session">{{session('deleteCategory')}}</p>
+    @endif
 <div>
     <table class="admin-table">
         <tr>

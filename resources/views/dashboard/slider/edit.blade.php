@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div class="form-card">
-        <h2 class="page-title">Create Category</h2>
+        <h2 class="page-title">Edit Slider</h2>
     <form action="{{route('slider.update',['id'=>$slider->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('put')

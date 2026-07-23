@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class TeamController extends Controller
 {
+    use ImageController;
+
     public function index()
     {
         $team = Team::paginate(5);
@@ -87,11 +89,8 @@ class TeamController extends Controller
     
     public function destroy(string $id)
     {
-        $deleteImage = Team::findOrfail($id)->image; 
-        if(file_exists("images/team/".$deleteImage)){
-            unlink("images/team/".$deleteImage); 
-        }
-        Team::destroy($id);
+        $this->deleteRecord("App\Models\Team",$id,"images/team");
+
         Session()->flash("deleteTeam","Team is deleted successfully");
         return back();
     }
