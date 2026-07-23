@@ -35,7 +35,7 @@
         @include('front.partials.products.products')
     {{-- ============== End Recent  ============== --}}
     {{-- ============== Categories  ============== --}}
-        @include('front.partials.products.categories')
+        @include('front.partials.products.categories',['category'=>$category])
     {{-- ============== End Categories  ============== --}}
 
     {{-- ============== End Left Side ============== --}}

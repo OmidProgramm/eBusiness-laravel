@@ -3,13 +3,14 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class,'index'])->name('show-website');
-Route::get('/category',[IndexController::class,'category'])->name('index.category');
+Route::get('/category/{id}',[IndexController::class,'category'])->name('index.category');
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -44,5 +45,8 @@ Route::prefix('dashboard')->group(function () {
         // Category CRUD
         Route::resource("/category",CategoryController::class)->parameters(["category"=>"id"]);
         // End Category CRUD
+        // product CRUD
+        Route::resource("/product",ProductController::class)->parameters(["product"=>"id"]);
+        // End product CRUD
     
 });

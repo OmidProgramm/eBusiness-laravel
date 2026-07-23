@@ -3,7 +3,7 @@
 
     <div class="team-card">
         <div class="team-img">
-            <a href="{{route('index.category')}}">
+            <a href="{{route('index.category',['id'=>$item->id])}}">
             <img src="{{ asset('images/category/'.$item->images) }}" alt="{{ $item->title }}">
             </a>
         </div>
