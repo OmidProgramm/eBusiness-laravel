@@ -44,7 +44,8 @@
             </tr>
         @endforelse
     </table>
-     {{$category->links()}} 
+     {{-- {{$category->links()}}  --}}
      <div class="btn-parent"><a class="btn btn-primary" href="{{route('category.create')}}">Create-Category</a></div>
+     
 </div>
 @endsection

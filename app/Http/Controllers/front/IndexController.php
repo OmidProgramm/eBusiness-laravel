@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Seo;
 use App\Models\Slider;
 use App\Models\Team;
@@ -23,6 +24,8 @@ class IndexController extends Controller
 
     public function category($id){
         $category = Category::all();
-        return view("front.product",compact('category'));
+        $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
+        $products = Product::paginate(2);
+        return view("front.category",compact('category','productRecent','products'));
     }
 }

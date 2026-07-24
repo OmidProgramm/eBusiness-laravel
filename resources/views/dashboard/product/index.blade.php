@@ -43,7 +43,7 @@
             </tr>
         @endforelse
     </table>
-    {{$product->links()}}
+    {{-- {{$product->links()}} --}}
      <div class="btn-parent"><a class="btn btn-primary" href="{{route('product.create')}}">Create-Product</a></div>
 </div>
 @endsection

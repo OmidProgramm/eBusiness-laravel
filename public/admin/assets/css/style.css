@@ -6,14 +6,14 @@
     color: white;
     padding: 10px;
 }
-ul {
+.getNav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-ul li a {
+.getNav ul li a {
     margin: 8px;
     display: block;
     color: white;
@@ -22,21 +22,21 @@ ul li a {
     border-radius: 12px;
 }
 
-ul li a:hover:not(.active) {
+.getNav ul li a:hover:not(.active) {
     background-color: #111111;
 }
 
-ul li a.active {
+.getNav ul li a.active {
     background-color: #04AA6D;
 }
-ul li a.backHome{
+.getNav ul li a.backHome{
     background-color: #112a76;
 }
-ul li a.danger {
+.getNav ul li a.danger {
     background-color: #ef6013;
 }
 
-.form-not{
+.getNav .form-not{
     display: none;
 }
 

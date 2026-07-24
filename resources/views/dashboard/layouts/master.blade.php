@@ -17,7 +17,7 @@
             <nav class="getNav">
                 <h4>Logo</h4>
                 <ul>
-                    <li><a class="active" href="#home">Home</a></li>
+                    <li><a class="active" href="/">Home</a></li>
                     <li><a class="backHome" href="{{route('slider.index')}}">slider</a></li>
                     <li><a class="backHome" href="{{route('about.index')}}">about</a></li>
                     <li><a class="backHome" href="{{route('team.index')}}">team</a></li>
@@ -37,6 +37,7 @@
     {{-- End Navbar --}} 
     {{-- make Menu --}} 
         <h5 class="">Hello Admin</h5>
+        
     {{-- end make Menu --}} 
     @yield("content")
    
