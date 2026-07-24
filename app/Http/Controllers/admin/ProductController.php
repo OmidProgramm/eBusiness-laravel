@@ -3,61 +3,63 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\createProductRequest;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    use ImageController;
+   
     public function index()
     {
-        //
+        $product = Product::with('category')->paginate(5);
+        
+        return view("dashboard.product.index", compact('product'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function create()
     {
-        //
+        $category = Category::pluck('title','id');
+        return view("dashboard.product.create",compact('category'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    
+    public function store(createProductRequest $request)
     {
-        //
+        $fileImage = $request->file('image');
+        $path = "images/product";
+        $image = $this->uploadImage($fileImage,$path);
+        Product::create([
+            "title" => $request->title,
+            "content" => $request->content,
+            "image" => $image,
+            "category_id" => $request ->category_id
+        ]);
+        session()->flash('createProduct', "Slider is created successfully");
+       return redirect()->route("product.create");
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
         //
