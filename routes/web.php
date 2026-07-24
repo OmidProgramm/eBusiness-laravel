@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class,'index'])->name('show-website');
 Route::get('/category/{id}',[IndexController::class,'category'])->name('index.category');
+Route::get('/product/{title}',[IndexController::class,'product'])->name('index.product');
 Route::get('/login', function () {
     return view('auth.login');
 });

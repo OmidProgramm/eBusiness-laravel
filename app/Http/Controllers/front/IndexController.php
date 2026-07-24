@@ -28,4 +28,8 @@ class IndexController extends Controller
         $products = Product::paginate(2);
         return view("front.category",compact('category','productRecent','products'));
     }
+    public function product($title){
+        $product = Product::where('title', $title)->firstOrFail();
+        return view("front.product", compact('product'));
+    }
 }

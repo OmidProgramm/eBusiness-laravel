@@ -10,6 +10,7 @@
 
                         <div class="product-footer">
                             <span>{{ $product->category->title }}</span>
+                            <span><a href="{{route('index.product',['title'=>$product->title])}}">Read more...</a></span>
 
                             <span>{{ $product->created_at->format('Y-m-d') }}</span>
                         </div>

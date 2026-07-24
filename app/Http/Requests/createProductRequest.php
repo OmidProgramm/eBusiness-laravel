@@ -21,7 +21,7 @@ class createProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => "required|max:200",
+            "title" => "required|max:200|unique:products",
             "image" => "required|mimes:jpg,jpeg,png|image",
             "content" => "required",
             "category_id" => "required"

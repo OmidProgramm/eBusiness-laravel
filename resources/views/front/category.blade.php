@@ -1,6 +1,6 @@
 @extends('layouts.masterFront')
-@section('seo')
-<link rel="stylesheet" href="{{ asset('front/assets/css/products.css') }}">
+@section('css')
+<link rel="stylesheet" href="{{ asset('front/assets/css/category.css') }}">
 @endsection
 @section('seo')
     {{-- ============== Header ============== --}}
@@ -22,7 +22,7 @@
 
 @section('content')
     
-    <h1>Hello Laravel Product</h1></div>
+    <h1>Hello Laravel Category</h1></div>
     {{-- ============== Header ============== --}}
         @include('front.partials.header')
     {{-- ============== End Header ============== --}}
