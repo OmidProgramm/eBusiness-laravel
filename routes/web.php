@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\InfoController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\TeamController;
@@ -49,5 +50,9 @@ Route::prefix('dashboard')->group(function () {
         // product CRUD
         Route::resource("/product",ProductController::class)->parameters(["product"=>"id"]);
         // End product CRUD
+    
+        // Information CRUD
+        Route::resource("/info",InfoController::class)->parameters(["info"=>"id"]); 
+        // End Info CRUD
     
 });

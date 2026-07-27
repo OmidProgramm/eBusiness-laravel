@@ -23,6 +23,7 @@
                     <li><a class="backHome" href="{{route('team.index')}}">team</a></li>
                     <li><a class="backHome" href="{{route('category.index')}}">category</a></li>
                     <li><a class="backHome" href="{{route('product.index')}}">product</a></li>
+                    <li><a class="backHome" href="{{route('info.index')}}">info</a></li>
                     <li><a class="backHome" href="{{route('show-website')}}" target="_blank">Show-Website</a></li>
                     <li>
                         {{-- <form action="{{route('logout')}}" method="POST" class="form-not">
