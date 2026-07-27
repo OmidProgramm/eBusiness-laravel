@@ -15,12 +15,12 @@
             <th>Email</th>
             <th>Work</th>
             <th>Delete</th>
-            <th>Update</th>
+            
         </tr>
     
-        @forelse ($infos as $item)
+        @forelse ($info as $item)
             <tr>
-                <td>{{$item->info}}</td>
+                <td>{{ Str::limit($item->info, 20) }}</td>
                 <td>{{$item->phone}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->work}}</td>
@@ -31,11 +31,6 @@
                         <input type="submit" value="delete" class="btn btn-delete btn-sm">
                     </form>
                 </td>
-                <td>
-                    <form action="{{route('info.edit',['id'=>$item->id])}}" method="GET">
-                        <input type="submit" value="edit" class="btn btn-edit btn-sm">
-                    </form>
-                </td>
             </tr>
         @empty
             <tr>
@@ -43,7 +38,6 @@
             </tr>
         @endforelse
     </table>
-     {{$infos->links()}} 
      <div class="btn-parent"><a class="btn btn-primary" href="{{route('info.create')}}">Create-Info</a></div>
 </div>
 @endsection
