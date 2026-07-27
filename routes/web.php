@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\InfoController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\admin\SocialController;
 use App\Http\Controllers\admin\TeamController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -54,5 +55,9 @@ Route::prefix('dashboard')->group(function () {
         // Information CRUD
         Route::resource("/info",InfoController::class)->parameters(["info"=>"id"]); 
         // End Info CRUD
+
+        // Social CRUD
+        Route::resource("/social",SocialController::class)->parameters(["social"=>"id"]); 
+        // End Social CRUD
     
 });
