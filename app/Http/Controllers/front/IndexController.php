@@ -43,4 +43,7 @@ class IndexController extends Controller
         $social = Social::orderBy('id',"desc")->first();
         return view("front.product", compact('category','productRecent','product','info',"social"));
     }
+    public function ajaxContact(Request $request){
+        dd($request->all());
+    }
 }
