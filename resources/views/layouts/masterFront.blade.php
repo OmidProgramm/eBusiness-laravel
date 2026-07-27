@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('front/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/about.css') }}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/team.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/assets/css/footer.css') }}">
      <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
     @yield("css")
     {{-- end css --}}

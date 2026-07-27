@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Information;
 use App\Models\Product;
 use App\Models\Seo;
 use App\Models\Slider;
@@ -19,20 +20,23 @@ class IndexController extends Controller
         $about = About::orderBy('id','desc')->first();
         $team = Team::all();
         $category = Category::all();
-        return view("front.index", compact('seo',"slider","about","team","category"));
+        $info = Information::orderBy('id',"desc")->first();
+         return view("front.index", compact('seo',"slider","about","team","category","info"));
     }
 
     public function category($id){
         $category = Category::all();
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
         $products = Product::paginate(2);
-        return view("front.category",compact('category','productRecent','products','id'));
+        $info = Information::orderBy('id',"desc")->first();
+        return view("front.category",compact('category','productRecent','products','id','info'));
     }
     public function product($title,$id){
         $category = Category::all();
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
         
         $product = Product::where('title', $title)->firstOrFail();
-        return view("front.product", compact('category','productRecent','product'));
+        $info = Information::orderBy('id',"desc")->first();
+        return view("front.product", compact('category','productRecent','product','info'));
     }
 }
