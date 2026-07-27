@@ -26,10 +26,13 @@ class IndexController extends Controller
         $category = Category::all();
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
         $products = Product::paginate(2);
-        return view("front.category",compact('category','productRecent','products'));
+        return view("front.category",compact('category','productRecent','products','id'));
     }
-    public function product($title){
+    public function product($title,$id){
+        $category = Category::all();
+        $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
+        
         $product = Product::where('title', $title)->firstOrFail();
-        return view("front.product", compact('product'));
+        return view("front.product", compact('category','productRecent','product'));
     }
 }
