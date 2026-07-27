@@ -54,7 +54,7 @@
     {{-- ============== End Main ============== --}}
 
     {{-- ============== Footer ============== --}}
-        @include('front.partials.footer',['info'=>$info])
+        @include('front.partials.footer',['info'=>$info,"social"=>$social])
     {{-- ============== End Footer ============== --}}
    
 @endsection

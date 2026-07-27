@@ -9,6 +9,7 @@ use App\Models\Information;
 use App\Models\Product;
 use App\Models\Seo;
 use App\Models\Slider;
+use App\Models\Social;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class IndexController extends Controller
         $team = Team::all();
         $category = Category::all();
         $info = Information::orderBy('id',"desc")->first();
-         return view("front.index", compact('seo',"slider","about","team","category","info"));
+        $social = Social::orderBy('id',"desc")->first();
+         return view("front.index", compact('seo',"slider","about","team","category","info", "social"));
     }
 
     public function category($id){
@@ -29,7 +31,8 @@ class IndexController extends Controller
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
         $products = Product::paginate(2);
         $info = Information::orderBy('id',"desc")->first();
-        return view("front.category",compact('category','productRecent','products','id','info'));
+        $social = Social::orderBy('id',"desc")->first();
+        return view("front.category",compact('category','productRecent','products','id','info',"social"));
     }
     public function product($title,$id){
         $category = Category::all();
@@ -37,6 +40,7 @@ class IndexController extends Controller
         
         $product = Product::where('title', $title)->firstOrFail();
         $info = Information::orderBy('id',"desc")->first();
-        return view("front.product", compact('category','productRecent','product','info'));
+        $social = Social::orderBy('id',"desc")->first();
+        return view("front.product", compact('category','productRecent','product','info',"social"));
     }
 }

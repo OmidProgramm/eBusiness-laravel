@@ -29,5 +29,8 @@
         </div>
     </div>
    </div>
+   {{-- ============== Footer ============== --}}
+        @include('front.partials.footer',['info'=>$info,"social"=>$social])
+    {{-- ============== End Footer ============== --}}
    
 @endsection
