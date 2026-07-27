@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\InfoController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\SliderController;
@@ -59,6 +60,10 @@ Route::prefix('dashboard')->group(function () {
 
         // Social CRUD
         Route::resource("/social",SocialController::class)->parameters(["social"=>"id"]); 
-        // End Social CRUD
-    
+        // End contact CRUD
+        Route::get("/contact",[ContactController::class, 'index'])->name('contact.index'); 
+        Route::delete("/contact/{id}",[ContactController::class, 'destroy'])->name('contact.destroy');
+      
+        
+        // End contact CRUD
 });

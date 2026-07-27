@@ -4,6 +4,9 @@
 
 
 <h2>Contact Section</h2>
+@if(session('sendEmail'))
+        <p class="session">{{session('sendEmail')}}</p>
+    @endif
 <div class="form-card">
     <form action="{{route('ajax-contact')}}" method="POST">
         @csrf
@@ -38,6 +41,7 @@
         @enderror
         <input type="submit" value="Send" class="btn btn-success">
     </form>
+    
     </div>
 
 

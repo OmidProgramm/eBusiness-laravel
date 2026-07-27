@@ -5,6 +5,7 @@ namespace App\Http\Controllers\front;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Information;
 use App\Models\Product;
 use App\Models\Seo;
@@ -44,6 +45,12 @@ class IndexController extends Controller
         return view("front.product", compact('category','productRecent','product','info',"social"));
     }
     public function ajaxContact(Request $request){
-        dd($request->all());
+        Contact::create([
+            "fullName" => $request->fullName,
+            "email" => $request->email,
+            "comment" => $request->comment
+        ]);
+        session()->flash('sendEmail', "Email is sended successfully");
+        return back();
     }
 }
