@@ -29,6 +29,11 @@
         </div>
     </div>
    </div>
+   {{-- ============== Comments ============== --}}
+   @include('front.partials.products.comment',["product_id"=>$product->title])
+
+   {{-- ============== End Comments ============== --}}
+
    {{-- ============== Footer ============== --}}
         @include('front.partials.footer',['info'=>$info,"social"=>$social])
     {{-- ============== End Footer ============== --}}

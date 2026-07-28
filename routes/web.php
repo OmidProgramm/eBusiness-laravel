@@ -16,6 +16,7 @@ Route::get('/',[IndexController::class,'index'])->name('show-website');
 Route::get('/category/{id}',[IndexController::class,'category'])->name('index.category');
 Route::get('/product/{title}/{id}',[IndexController::class,'product'])->name('index.product');
 Route::post('/ajax-contact',[IndexController::class,'ajaxContact'])->name('ajax-contact');
+Route::post('/comments',[IndexController::class,'ajaxComments'])->name('ajax-comments');
 Route::get('/login', function () {
     return view('auth.login');
 });
@@ -61,9 +62,7 @@ Route::prefix('dashboard')->group(function () {
         // Social CRUD
         Route::resource("/social",SocialController::class)->parameters(["social"=>"id"]); 
         // End contact CRUD
-        Route::get("/contact",[ContactController::class, 'index'])->name('contact.index'); 
-        Route::delete("/contact/{id}",[ContactController::class, 'destroy'])->name('contact.destroy');
-      
-        
+        Route::get("/contact",[ContactController::class,'index'])->name('contact.index'); 
+        Route::delete("/contact/{id}",[ContactController::class,'destroy'])->name('contact.destroy');
         // End contact CRUD
 });

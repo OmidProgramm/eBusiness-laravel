@@ -3,12 +3,13 @@
 @endsection
 
 
-<h2>Contact Section</h2>
+<h2>Comment Section</h2>
+
 @if(session('sendEmail'))
         <p class="session">{{session('sendEmail')}}</p>
     @endif
 <div class="form-card">
-    <form action="{{route('ajax-contact')}}" method="POST" id="contact">
+    <form action="{{route('ajax-comments')}}" method="POST" id="comments">
         @csrf
 
         <div class="form-group">
@@ -19,8 +20,9 @@
         
         @error('fullName')
             <p class="error">{{$message}}</p>
-        @enderror
-
+            @enderror
+            
+            
         <div class="form-group">
         <label class="form-label" for="email">email:</label>
         <input class="form-control" type="text" id="email" name="email" placeholder="your email" style="border:1px solid black">
@@ -43,6 +45,7 @@
         @error('comment')
             <p class="error">{{$message}}</p>
         @enderror
+        <input type="text" value="{{$product_id}}" name="product_id" class="hidden" id="product_id">
         <input type="submit" value="Send" class="btn btn-success">
     </form>
     </div>
@@ -50,14 +53,15 @@
 @section('js')
 
     <script>
-        const form = document.getElementById('contact');
+        const form = document.getElementById('comments');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            /* const formData = new FormData(form); */
+           
             let isValid = true;
             const fullNameError = document.getElementById("fullNameError");
             const emailError = document.getElementById("emailError");
             const commentError = document.getElementById("commentError");
+            
             fullNameError.textContent = "";
             fullNameError.classList.add("hidden");
             emailError.textContent = "";
@@ -66,7 +70,8 @@
             commentError.classList.add("hidden");
             let fullName = document.getElementById('fullName').value;
             let email = document.getElementById('email').value;
-            let comment = document.getElementById('comment').value.trim();
+            let comment = document.getElementById('comment').value;
+            let product_id = document.getElementById('product_id').value;
             if(fullName.trim()===""){
                 fullNameError.textContent = "Full name is required.";
                 fullNameError.classList.remove("hidden");
@@ -99,7 +104,12 @@
                         'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                         'Accept': 'application/json'
                 },
-                    body: JSON.stringify({ fullName: fullName, email:email, comment:comment }),
+                    body: JSON.stringify({
+                        fullName:fullName, 
+                        email:email, 
+                        comment:comment, 
+                        product_id:product_id
+                    }),
                 });
                 const result = await response.json();
                 console.log(result);

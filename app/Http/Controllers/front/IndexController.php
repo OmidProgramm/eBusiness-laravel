@@ -38,7 +38,7 @@ class IndexController extends Controller
     public function product($title,$id){
         $category = Category::all();
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
-        
+    
         $product = Product::where('title', $title)->firstOrFail();
         $info = Information::orderBy('id',"desc")->first();
         $social = Social::orderBy('id',"desc")->first();
@@ -56,6 +56,8 @@ class IndexController extends Controller
             'message' => 'Email sent successfully.',
             'data' => $request->all(),
         ]);
-        
+    }
+    public function ajaxComments(Request $request){
+        dd($request->all());
     }
 }
