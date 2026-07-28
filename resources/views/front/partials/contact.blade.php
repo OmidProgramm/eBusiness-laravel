@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="fullName" class="form-label">fullName:</label>
             <input class="form-control" type="text" id="fullName" name="fullName" placeholder="Your fullName" value="{{ old('fullName') }}" style="border:1px solid black">
-            <p id="fullNameError" class="error"></p>
+            <p id="fullNameError" class="error hidden"></p>
         </div>
         
         @error('fullName')
@@ -24,7 +24,7 @@
         <div class="form-group">
         <label class="form-label" for="email">email:</label>
         <input class="form-control" type="text" id="email" name="email" placeholder="your email" style="border:1px solid black">
-        <p id="emailError" class="error"></p>
+        <p id="emailError" class="error hidden"></p>
         </div>
         @error('email')
             <p class="error">{{$message}}</p>
@@ -38,7 +38,7 @@
                 placeholder="Write comment.."
                 >{{ old('comment') }}
             </textarea>
-            <p id="commentError" class="error"></p>
+            <p id="commentError" class="error hidden"></p>
         </div>
         @error('comment')
             <p class="error">{{$message}}</p>
@@ -48,29 +48,43 @@
     </div>
      
 @section('js')
+
     <script>
         const form = document.getElementById('contact');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            /* const formData = new FormData(form); */
             let isValid = true;
-            document.getElementById('fullNameError').textContent = "";
-            document.getElementById('emailError').textContent = "";
-            document.getElementById('commentError').textContent = "";
+            const fullNameError = document.getElementById("fullNameError");
+            const emailError = document.getElementById("emailError");
+            const commentError = document.getElementById("commentError");
+            fullNameError.textContent = "";
+            fullNameError.classList.add("hidden");
+            emailError.textContent = "";
+            emailError.classList.add("hidden");
+            commentError.textContent = "";
+            commentError.classList.add("hidden");
             let fullName = document.getElementById('fullName').value;
             let email = document.getElementById('email').value;
             let comment = document.getElementById('comment').value.trim();
             if(fullName.trim()===""){
-                document.getElementById('fullNameError').textContent = "Full name is required.";
+                fullNameError.textContent = "Full name is required.";
+                fullNameError.classList.remove("hidden");
                 isValid = false;
             }
             const emailRegex =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(emailRegex.test(email.trim() && email.trim()==="")){
-                document.getElementById('emailError').textContent = "Invalid email.";
+            if (email.trim() === "") {
+                emailError.textContent = "Email is required.";
+                emailError.classList.remove("hidden");
+                isValid = false;
+            }
+            else if (!emailRegex.test(email.trim())) {
+                emailError.textContent = "Invalid email."
+                emailError.classList.remove("hidden");
                 isValid = false;
             }
             if(comment.trim().length < 10){
-                document.getElementById('commentError').textContent = "Comment must be at least 10 characters.";
+                commentError.textContent = "Comment must be at least 10 characters.";
+                commentError.classList.remove("hidden");
                 isValid = false;
             }
             if(!isValid){
@@ -96,6 +110,8 @@
             }}
         });
     </script>
+
+    /* const formData = new FormData(form); */
 @endsection
     
     
