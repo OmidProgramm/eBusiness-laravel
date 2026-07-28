@@ -8,13 +8,15 @@
         <p class="session">{{session('sendEmail')}}</p>
     @endif
 <div class="form-card">
-    <form action="{{route('ajax-contact')}}" method="POST">
+    <form action="{{route('ajax-contact')}}" method="POST" id="contact">
         @csrf
 
         <div class="form-group">
             <label for="fullName" class="form-label">fullName:</label>
             <input class="form-control" type="text" id="fullName" name="fullName" placeholder="Your fullName" value="{{ old('fullName') }}" style="border:1px solid black">
+            <p id="fullNameError" class="error"></p>
         </div>
+        
         @error('fullName')
             <p class="error">{{$message}}</p>
         @enderror
@@ -22,6 +24,7 @@
         <div class="form-group">
         <label class="form-label" for="email">email:</label>
         <input class="form-control" type="text" id="email" name="email" placeholder="your email" style="border:1px solid black">
+        <p id="emailError" class="error"></p>
         </div>
         @error('email')
             <p class="error">{{$message}}</p>
@@ -35,14 +38,67 @@
                 placeholder="Write comment.."
                 >{{ old('comment') }}
             </textarea>
+            <p id="commentError" class="error"></p>
         </div>
         @error('comment')
             <p class="error">{{$message}}</p>
         @enderror
         <input type="submit" value="Send" class="btn btn-success">
     </form>
-    
     </div>
+     
+@section('js')
+    <script>
+        const form = document.getElementById('contact');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            /* const formData = new FormData(form); */
+            let isValid = true;
+            document.getElementById('fullNameError').textContent = "";
+            document.getElementById('emailError').textContent = "";
+            document.getElementById('commentError').textContent = "";
+            let fullName = document.getElementById('fullName').value;
+            let email = document.getElementById('email').value;
+            let comment = document.getElementById('comment').value.trim();
+            if(fullName.trim()===""){
+                document.getElementById('fullNameError').textContent = "Full name is required.";
+                isValid = false;
+            }
+            const emailRegex =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(emailRegex.test(email.trim() && email.trim()==="")){
+                document.getElementById('emailError').textContent = "Invalid email.";
+                isValid = false;
+            }
+            if(comment.trim().length < 10){
+                document.getElementById('commentError').textContent = "Comment must be at least 10 characters.";
+                isValid = false;
+            }
+            if(!isValid){
+                return;
+            }else{
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                        'Accept': 'application/json'
+                },
+                    body: JSON.stringify({ fullName: fullName, email:email, comment:comment }),
+                });
+                const result = await response.json();
+                console.log(result);
+                if (result.success) {
+                    alert(result.message);
+                } 
+            } catch (error) {
+                console.error(error);
+            }}
+        });
+    </script>
+@endsection
+    
+    
 
 
 

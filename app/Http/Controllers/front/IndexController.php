@@ -51,6 +51,11 @@ class IndexController extends Controller
             "comment" => $request->comment
         ]);
         session()->flash('sendEmail', "Email is sended successfully");
-        return back();
+        return response()->json([
+            'success' => true,
+            'message' => 'Email sent successfully.',
+            'data' => $request->all(),
+        ]);
+        
     }
 }
