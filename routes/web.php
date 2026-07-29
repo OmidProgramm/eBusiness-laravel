@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\InfoController;
 use App\Http\Controllers\admin\ProductController;
@@ -17,15 +18,6 @@ Route::get('/category/{id}',[IndexController::class,'category'])->name('index.ca
 Route::get('/product/{title}/{id}',[IndexController::class,'product'])->name('index.product');
 Route::post('/ajax-contact',[IndexController::class,'ajaxContact'])->name('ajax-contact');
 Route::post('/comments',[IndexController::class,'ajaxComments'])->name('ajax-comments');
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/register', function () {
-    return view('auth.register');
-});
-Route::get('/verify', function () {
-    return view('auth.verify');
-});
 
 Route::prefix('dashboard')->group(function () {
     // Admin & Seo
@@ -61,8 +53,12 @@ Route::prefix('dashboard')->group(function () {
 
         // Social CRUD
         Route::resource("/social",SocialController::class)->parameters(["social"=>"id"]); 
-        // End contact CRUD
+        // contact CRUD
         Route::get("/contact",[ContactController::class,'index'])->name('contact.index'); 
         Route::delete("/contact/{id}",[ContactController::class,'destroy'])->name('contact.destroy');
         // End contact CRUD
+        // Comment CRUD
+        Route::get("/comment",[CommentController::class,'index'])->name('comment.index'); 
+        Route::delete("/comment/{id}",[CommentController::class,'destroy'])->name('comment.destroy');
+        // End Comment CRUD
 });

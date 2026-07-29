@@ -26,7 +26,7 @@
                     <li><a class="backHome" href="{{route('info.index')}}">info</a></li>
                     <li><a class="backHome" href="{{route('social.index')}}">social</a></li>
                     <li><a class="backHome" href="{{route('contact.index')}}">contact</a></li>
-                    <li><a class="backHome" href="{{route('ajax-comments')}}">comments</a></li>
+                    <li><a class="backHome" href="{{route('comment.index')}}">comments</a></li>
                     <li><a class="backHome" href="{{route('show-website')}}" target="_blank">Show-Website</a></li>
                     <li>
                         {{-- <form action="{{route('logout')}}" method="POST" class="form-not">

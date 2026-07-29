@@ -43,12 +43,11 @@
     {{-- ============== End Categories  ============== --}}
     </aside>
  {{-- ============== End Left Side ============== --}}
-
  {{-- ============== Right Side ============== --}}
- {{-- ============== All Productse ============== --}}
 
- {{-- ============== End All Productse ============== --}}
-        @include('front.partials.products.allProducts',['products'=>$products])
+ {{-- ============== All Products ============== --}}
+    @include('front.partials.products.allProducts',['products'=>$products])
+ {{-- ============== End All Products ============== --}}
     </section>
     
 

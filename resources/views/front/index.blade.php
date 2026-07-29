@@ -39,11 +39,10 @@
         @include('front.partials.team')
     {{-- ============== End Team Section ============== --}}
 
-    {{-- ============== Portfolio Section ============== --}}
-        @include('front.partials.portfolio')
-    {{-- ============== End Portfolio Section ============== --}}
+    
 
     {{-- ============== Blog Section ============== --}}
+   
         @include('front.partials.blog')
     {{-- ============== End Blog Section ============== --}}
 

@@ -1,3 +1,4 @@
+<h3>Recent</h3>
 <aside class="category-sidebar">
             @forelse($productRecent as $item)
                 <div class="category-card">

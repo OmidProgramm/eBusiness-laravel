@@ -1,6 +1,6 @@
 <div class="team-container">
+    <h2>Blog Section</h2>
 @forelse ($category as $item)
-
     <div class="team-card">
         <div class="team-img">
             <a href="{{route('index.category',['id'=>$item->id])}}">

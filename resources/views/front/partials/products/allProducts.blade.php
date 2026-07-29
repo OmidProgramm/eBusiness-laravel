@@ -1,3 +1,4 @@
+
  <main class="products-content">
             @forelse($products as $product)
                 <div class="product-card">

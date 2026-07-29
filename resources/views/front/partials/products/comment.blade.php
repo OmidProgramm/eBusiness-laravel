@@ -9,7 +9,7 @@
         <p class="session">{{session('sendEmail')}}</p>
     @endif
 <div class="form-card">
-    <form action="{{route('ajax-comments')}}" method="POST" id="comments">
+    <form action="{{route('ajax-comments')}}" method="POST" id="comments-form">
         @csrf
 
         <div class="form-group">
@@ -38,8 +38,7 @@
                 id="comment"
                 name="comment"
                 placeholder="Write comment.."
-                >{{ old('comment') }}
-            </textarea>
+                >{{old('comment')}}</textarea>
             <p id="commentError" class="error hidden"></p>
         </div>
         @error('comment')
@@ -51,46 +50,44 @@
     </div>
      
 @section('js')
-
     <script>
-        const form = document.getElementById('comments');
+        const form = document.getElementById('comments-form');
+        const fullNameError = document.getElementById("fullNameError");
+        const emailError = document.getElementById("emailError");
+        const commentError = document.getElementById("commentError");
+        function showError(element, message){
+            element.textContent = message;
+            element.classList.remove("hidden");
+        }
+        function clearError(element){
+            element.textContent = "";
+            element.classList.add("hidden");
+        }
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
-           
             let isValid = true;
-            const fullNameError = document.getElementById("fullNameError");
-            const emailError = document.getElementById("emailError");
-            const commentError = document.getElementById("commentError");
-            
-            fullNameError.textContent = "";
-            fullNameError.classList.add("hidden");
-            emailError.textContent = "";
-            emailError.classList.add("hidden");
-            commentError.textContent = "";
-            commentError.classList.add("hidden");
+            clearError(fullNameError);
+            clearError(emailError);
+            clearError(commentError);
             let fullName = document.getElementById('fullName').value;
             let email = document.getElementById('email').value;
             let comment = document.getElementById('comment').value;
             let product_id = document.getElementById('product_id').value;
             if(fullName.trim()===""){
-                fullNameError.textContent = "Full name is required.";
-                fullNameError.classList.remove("hidden");
+                showError(fullNameError,"Full name is required.");
                 isValid = false;
             }
             const emailRegex =/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (email.trim() === "") {
-                emailError.textContent = "Email is required.";
-                emailError.classList.remove("hidden");
+                showError(emailError,"Email is required.");
                 isValid = false;
             }
             else if (!emailRegex.test(email.trim())) {
-                emailError.textContent = "Invalid email."
-                emailError.classList.remove("hidden");
+                showError(emailError,"Invalid email.");
                 isValid = false;
             }
             if(comment.trim().length < 10){
-                commentError.textContent = "Comment must be at least 10 characters.";
-                commentError.classList.remove("hidden");
+                showError(commentError,"Comment must be at least 10 characters.");
                 isValid = false;
             }
             if(!isValid){
@@ -103,26 +100,22 @@
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
                         'Accept': 'application/json'
-                },
+                    },
                     body: JSON.stringify({
-                        fullName:fullName, 
-                        email:email, 
-                        comment:comment, 
-                        product_id:product_id
+                        fullName, 
+                        email, 
+                        comment, 
+                        product_id
                     }),
                 });
                 const result = await response.json();
                 console.log(result);
-                if (result.success) {
-                    alert(result.message);
-                } 
+                form.reset();
             } catch (error) {
                 console.error(error);
             }}
         });
     </script>
-
-    
 @endsection
     
     

@@ -28,6 +28,7 @@
             </p>
         </div>
     </div>
+    
    </div>
    {{-- ============== Comments ============== --}}
    @include('front.partials.products.comment',["product_id"=>$product->title])

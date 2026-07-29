@@ -36,8 +36,7 @@
                 id="comment"
                 name="comment"
                 placeholder="Write comment.."
-                >{{ old('comment') }}
-            </textarea>
+                >{{old('comment')}}</textarea>
             <p id="commentError" class="error hidden"></p>
         </div>
         @error('comment')
