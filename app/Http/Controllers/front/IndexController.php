@@ -36,11 +36,13 @@ class IndexController extends Controller
         $social = Social::orderBy('id',"desc")->first();
         return view("front.category",compact('category','productRecent','products','id','info',"social"));
     }
-    public function product($title,$id){
+    public function product($titleC,$id){
+        $categoryName = $titleC;
         $category = Category::all();
         $productRecent = Category::findOrfail($id)->products()->orderBy('id','desc')->take(5)->skip(0)->get();
-    
-        $product = Product::where('title', $title)->firstOrFail();
+        
+        $product = Product::where('id',"=", $id)->firstOrFail();
+       
         $info = Information::orderBy('id',"desc")->first();
         $social = Social::orderBy('id',"desc")->first();
         return view("front.product", compact('category','productRecent','product','info',"social"));

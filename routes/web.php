@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class,'index'])->name('show-website');
 Route::get('/category/{id}',[IndexController::class,'category'])->name('index.category');
-Route::get('/product/{title}/{id}',[IndexController::class,'product'])->name('index.product');
+Route::get('/product/{titleC}/{id}',[IndexController::class,'product'])->name('index.product');
 Route::post('/ajax-contact',[IndexController::class,'ajaxContact'])->name('ajax-contact');
 Route::post('/comments',[IndexController::class,'ajaxComments'])->name('ajax-comments');
 
